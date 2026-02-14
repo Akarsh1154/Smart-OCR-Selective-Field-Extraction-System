@@ -1,0 +1,24 @@
+# Environments
+.venv/
+env/
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Databases
+*.sqlite3
+*.db
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Project Specific
+data/
+output/
+scanner/models/  # If you download large AI model weights locally
