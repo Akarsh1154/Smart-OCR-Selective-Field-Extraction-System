@@ -1,0 +1,25 @@
+# --- OCR & Image Processing ---
+easyocr>=1.7.0         # Modern AI-based OCR (Replacement for Tesseract)
+opencv-python-headless # Image processing (Headless for server stability)
+pillow>=10.0.0         # Basic image opening/saving
+numpy>=1.24.0          # Array processing for images
+
+# --- Intelligent Extraction (NLP) ---
+instructor>=1.4.0      # Maps OCR text to clean JSON schemas
+pydantic>=2.0.0        # Data validation and schema structure
+openai>=1.10.0         # For LLM-based extraction (GPT-4 or local models)
+
+# --- Ledger Backend (FastAPI & Database) ---
+fastapi>=0.110.0       # The web framework for your Ledger
+uvicorn[standard]      # The lightning-fast server
+sqlalchemy>=2.0.0      # Database toolkit for PostgreSQL
+psycopg2-binary        # PostgreSQL driver
+pydantic-settings      # Handles .env configuration
+
+# --- Security & Auth ---
+python-jose[cryptography] # JWT token generation
+passlib[bcrypt]           # Password hashing
+
+# --- General Utilities ---
+python-dotenv>=1.0.0   # Manage DB passwords and API keys
+requests>=2.31.0       # For internal API communication
