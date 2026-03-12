@@ -1,5 +1,6 @@
-
+import streamlit as st
 import cv2 as cv 
 def get_user_input():
-    image = r"example images\fancy_number_plate_bfbc501f34.jpg"
-    return image
+    input_image= st.file_uploader("Upload Image File")
+    options=st.selectbox("Choose the output" ,options=['total','customer info','date'])
+    return input_image,options

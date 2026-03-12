@@ -1,27 +1,13 @@
-# --- OCR & Image Processing ---
-matplotlib>=3.7.0      # For visualizing OCR results (optional)
-easyocr>=1.7.0         # Modern AI-based OCR (Replacement for Tesseract)
-opencv-python-headless # Image processing (Headless for server stability)
-pillow>=10.0.0         # Basic image opening/saving
-numpy>=1.24.0          # Array processing for images
+# --- Image Processing ---
+opencv-python-headless    # Your preprocessing pipeline
+pillow>=10.0.0            # LayoutLMv3 processor needs PIL images
+numpy>=1.24.0             # Array processing for images
 
-# --- Intelligent Extraction (NLP) ---
-instructor>=1.4.0      # Maps OCR text to clean JSON schemas
-pydantic>=2.0.0        # Data validation and schema structure
-openai>=1.10.0         # For LLM-based extraction (GPT-4 or local models)
+# --- Model & Training ---
+transformers>=4.30.0      # LayoutLMv3 model and processor
+torch>=2.0.0              # PyTorch engine underneath
+datasets>=2.14.0          # Loading CORD, SROIE from HuggingFace
+pydantic>=2.0.0           # Validating your JSON output
 
-# --- Ledger Backend (FastAPI & Database) ---
-fastapi>=0.110.0       # The web framework for your Ledger
-uvicorn[standard]      # The lightning-fast server
-sqlalchemy>=2.0.0      # Database toolkit for PostgreSQL
-psycopg2-binary        # PostgreSQL driver
-pydantic-settings      # Handles .env configuration
-
-# --- Security & Auth ---
-python-jose[cryptography] # JWT token generation
-passlib[bcrypt]           # Password hashing
-
-# --- General Utilities ---
-python-dotenv>=1.0.0   # Manage DB passwords and API keys
-requests>=2.31.0       # For internal API communication
-streamlit>=1.20.0     # For the user interface
+# --- UI ---
+streamlit>=1.20.0         # Your interface and buttons

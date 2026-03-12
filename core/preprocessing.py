@@ -1,6 +1,7 @@
 import cv2 as cv
 import numpy as np
 import streamlit as st  
+from PIL import Image
 
 def rescale_image(image, scale_factor=2):
     # Get original dimensions
@@ -61,18 +62,23 @@ def binarize_image(image):
     _, binary_image = cv.threshold(image, 0, 255, binary_image)
     return binary_image
 
-def clean_image(image):
+def clean_image(image,display=False):
+    image = np.array(image)
     # Pipeline: Rescale -> Gray -> Noise -> Binary -> Deskew
-    img = image
-    resimg = rescale_image(img)
-    st.image(resimg, caption="Rescaled Image")
+    resimg = rescale_image(image)
+    if display:                                    
+        st.image(resimg, caption="Rescaled Image")
     grayimg = to_grayscale(resimg)
-    st.image(grayimg, caption="Grayscale Image")
+    if display:                                    
+        st.image(grayimg, caption="Grayscale Image")
     removenoise = remove_noise(grayimg)
-    st.image(removenoise, caption="Denoised Image")
+    if display:                                    
+        st.image(removenoise, caption="Denoised Image")
     deskewedimg = deskew_image(removenoise)
-    st.image(deskewedimg, caption="Deskewed Image")
+    if display:                                    
+        st.image(deskewedimg, caption="Deskewed Image")
     binaryimg = binarize_image(deskewedimg)
-    st.image(binaryimg, caption="Binarized Image")
-    
+    if display:                                   
+        st.image(binaryimg, caption="Binarized Image")
+    binaryimg = Image.fromarray(binaryimg) 
     return binaryimg
