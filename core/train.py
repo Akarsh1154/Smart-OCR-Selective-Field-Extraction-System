@@ -62,7 +62,10 @@ def preprocess(example):
             truncation=True
         )
 
-        ans_tokens = processor.tokenizer.encode(answer)
+        # After
+        ans_tokens = processor.tokenizer.convert_tokens_to_ids(
+            processor.tokenizer.tokenize(answer)
+        )
         input_ids = encoding["input_ids"]
         start_pos = 0
         end_pos = 0
