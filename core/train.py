@@ -2,7 +2,7 @@ from transformers import LayoutLMv3Processor,LayoutLMv3ForQuestionAnswering,Trai
 import torch 
 from PIL import Image 
 from datasets import load_dataset
-from preprocessing import clean_image
+from core.preprocessing import clean_image
 import os
 
 DOCUMENT_TYPE = "receipt"    # change this each run
