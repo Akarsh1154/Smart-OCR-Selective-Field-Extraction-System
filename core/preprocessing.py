@@ -62,23 +62,22 @@ def binarize_image(image):
     _, binary_image = cv.threshold(image, 0, 255, binary_image)
     return binary_image
 
-def clean_image(image,display=False):
+def clean_image(image, display=False):
     image = np.array(image)
-    # Pipeline: Rescale -> Gray -> Noise -> Binary -> Deskew
     resimg = rescale_image(image)
-    if display:                                    
+    if display:
         st.image(resimg, caption="Rescaled Image")
     grayimg = to_grayscale(resimg)
-    if display:                                    
+    if display:
         st.image(grayimg, caption="Grayscale Image")
     removenoise = remove_noise(grayimg)
-    if display:                                    
+    if display:
         st.image(removenoise, caption="Denoised Image")
     deskewedimg = deskew_image(removenoise)
-    if display:                                    
+    if display:
         st.image(deskewedimg, caption="Deskewed Image")
     binaryimg = binarize_image(deskewedimg)
-    if display:                                   
+    if display:
         st.image(binaryimg, caption="Binarized Image")
-    binaryimg = Image.fromarray(binaryimg) 
+    binaryimg = Image.fromarray(binaryimg).convert("RGB")
     return binaryimg
